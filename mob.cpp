@@ -110,18 +110,9 @@ void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 		{
 			m_Position.y -= speed * elapsedTime;
 
-			// every 0.2 seconds
-			if (m_animateTimer > 0.2f)
-			{
-				// if rect is at the right most of the sprite sheet reset it
-				if (rectSourceSprite.left == 320) rectSourceSprite.left = 0;
-				// else just jump to the right one
-				else rectSourceSprite.left += 64;
 
-				// set the sprite to the correct texture and rect properties
-				m_Sprite = Sprite(m_TextureUp, rectSourceSprite);
+            m_Sprite = Sprite(m_TextureUp, rectSourceSprite);
 
-			}
 		}
 		//Used to ensure character doesn't move past boundary
 		else
