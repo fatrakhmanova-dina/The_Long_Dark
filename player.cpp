@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "player.h"
 //Constructor
 Player::Player(Vector2f position)
 {
