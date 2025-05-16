@@ -419,9 +419,6 @@ void Player::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 		}
 	}
 
-
-}
-
 	// set origin and position
 	m_Sprite.setOrigin(32, 32);
 	m_Sprite.setPosition(m_Position);
