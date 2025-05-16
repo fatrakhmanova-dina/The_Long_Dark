@@ -42,7 +42,7 @@ Player::Player(Vector2f position)
 	//m_TextureRight.loadFromFile("graphics/player/right.png");
 
 	// create rect to navigate through the spriresheet
-	rectSourceSprite = sf::IntRect(0, 0, 64, 64);
+	rectSourceSprite = sf::FloatRect(0, 0, 64, 64);
 
 	m_Sprite.setTexture(m_TextureRight);
 	m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
