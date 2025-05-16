@@ -14,7 +14,7 @@ bool Deer::IsHostile()
 //Constructor
 Mob::Mob(Vector2f position)
 {
-	health = 75;
+	Health = 75;
 	maxHealth = 75;
 
 	speed = 128;

@@ -11,7 +11,8 @@ class Mob
 {
 protected:
     int Health;
-
+    int maxHealth;
+    int speed;
     Vector2f m_Position;
 
 	float goal_PositionX;
