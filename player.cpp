@@ -28,6 +28,11 @@ Player::Player(Vector2f position)
 	water_held = 0;
 	pot = 0;
 
+	moveTime = 0;
+	speed = 128;
+	goal_PositionX = m_Position.x;
+	goal_PositionY = m_Position.y;
+
 	m_Position = position;
 
 	UpPressed = false;
@@ -315,3 +320,110 @@ void Player::stopDown()
 {
 	DownPressed = false;
 }
+
+void Player::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
+{
+	//If enough total time has passed, the player can move again
+	if (moveTime <= totalTime)
+	{
+		//Set position to current goal position
+		m_Position.x = goal_PositionX;
+		m_Position.y = goal_PositionY;
+		m_Sprite.setPosition(m_Position);
+		//move set to c to stop movement until button is pressed.
+		move = 'c';
+		//Checks direction pressed to see where to move character
+		if (UpPressed && !(m_Position.y - 128 < 0))
+		{
+			goal_PositionY = m_Position.y - 128;
+			//set to U to allow continuous movement up
+			move = 'U';
+		}
+		else if (DownPressed && m_Position.y + 128 < mapBounds.y)
+		{
+			goal_PositionY = m_Position.y + 128;
+			//set to D to allow continuous movement down
+			move = 'D';
+		}
+		else if (LeftPressed && !(m_Position.x - 128 < 0))
+		{
+			goal_PositionX = m_Position.x - 128;
+			//set to L to allow continuous movement left
+			move = 'L';
+		}
+		else if (RightPressed && m_Position.x + 128 < mapBounds.x)
+		{
+			goal_PositionX = m_Position.x + 128;
+			//set to R to allow continuous movement right
+			move = 'R';
+		}
+		//move not being c means that a movement has been registered
+		if (move != 'c')
+		{
+			//moveTime will be totalTime plus a certain amount to keep movement going the same way for a while.
+			moveTime = totalTime + 0.5;
+		}
+	}
+	//If moveTime is still larger than totalTime, then the character will continue moving in the same direction as what was inputted
+
+	//Depending on what move is, the player will continue moving in the previously inputted direction
+	if (move == 'U')
+	{
+		if (m_Position.y > goal_PositionY)
+		{
+			m_Position.y -= speed * elapsedTime;
+
+		}
+		else
+		{
+			m_Position.y = goal_PositionY;
+
+		}
+
+	}
+	if (move == 'D')
+	{
+		if (m_Position.y < goal_PositionY)
+		{
+			m_Position.y += speed * elapsedTime;
+
+		}
+		else
+		{
+			m_Position.y = goal_PositionY;
+
+		}
+	}
+	if (move == 'L')
+	{
+		if (m_Position.x > goal_PositionX)
+		{
+			m_Position.x -= speed * elapsedTime;
+
+		}
+		else
+		{
+			m_Position.x = goal_PositionX;
+
+        }
+	}
+	if (move == 'R')
+	{
+		if (m_Position.x < goal_PositionX)
+		{
+			m_Position.x += speed * elapsedTime;
+		}
+		else
+		{
+			m_Position.x = goal_PositionX;
+		}
+	}
+
+
+}
+
+	// set origin and position
+	m_Sprite.setOrigin(32, 32);
+	m_Sprite.setPosition(m_Position);
+}
+

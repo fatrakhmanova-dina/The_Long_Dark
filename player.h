@@ -81,6 +81,8 @@ public:
 
     void Pickup(std::string name);
 	// Moving functions
+	void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
+
 	void moveLeft();
 	void moveRight();
 	void moveUp();
@@ -100,6 +102,10 @@ protected:
 	int maxHealth;
 	// The current position of player
 	Vector2f m_Position;
+	float goal_PositionX;
+	float goal_PositionY;
+    float moveTime;
+    int speed;
 	// The hunger bar
 	int Food;
 	int maxFood;
