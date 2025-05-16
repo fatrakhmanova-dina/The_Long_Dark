@@ -25,7 +25,7 @@ public:
 	Sprite getSprite();
 
 protected:
-	const std::string SNOWPATH = "graphics/snow.png";
+	const std::string SNOWPATH = "snow.png";
 
 	terrainType m_terrainType;
 	Texture m_Texture; // store the texture of this object to be used by the sprite

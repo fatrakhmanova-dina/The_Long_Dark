@@ -3,6 +3,7 @@
 #define ENGINE_H
 
 #include "player.h"
+#include "tilemap.h"
 
 #include <iostream>
 #include<vector>
