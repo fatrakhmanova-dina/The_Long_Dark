@@ -3,12 +3,12 @@
 
 bool Wolf::IsHostile()
 {
-    return true;
+	return true;
 }
 
 bool Deer::IsHostile()
 {
-    return false;
+	return false;
 }
 
 //Constructor
@@ -18,17 +18,17 @@ Mob::Mob(Vector2f position)
 	maxHealth = 75;
 
 	speed = 128;
-    moveTime = 0;
+	moveTime = 0;
 
 	m_Position = position;
 	goal_PositionX = m_Position.x;
 	goal_PositionY = m_Position.y;
 
 	// load all correct textures
-	//m_TextureUp.loadFromFile("graphics/enemy/up.png");
-	//m_TextureDown.loadFromFile("graphics/enemy/down.png");
-	//m_TextureLeft.loadFromFile("graphics/enemy/left.png");
-	//m_TextureRight.loadFromFile("graphics/enemy/right.png");
+	m_TextureUp.loadFromFile("mup.png");
+	m_TextureDown.loadFromFile("mdown.png");
+	m_TextureLeft.loadFromFile("mleft.png");
+	m_TextureRight.loadFromFile("mright.png");
 
 	// create rect to navigate through the spriresheet
 	rectSourceSprite = sf::IntRect(0, 0, 64, 64);
@@ -47,7 +47,7 @@ FloatRect Mob::getPosition()
 
 Sprite Mob::getSprite()
 {
-    return m_Sprite;
+	return m_Sprite;
 }
 
 Vector2f Mob::getCenter()
@@ -111,7 +111,7 @@ void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 			m_Position.y -= speed * elapsedTime;
 
 
-            m_Sprite = Sprite(m_TextureUp, rectSourceSprite);
+			m_Sprite = Sprite(m_TextureUp, rectSourceSprite);
 
 		}
 		//Used to ensure character doesn't move past boundary
@@ -149,7 +149,7 @@ void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 			m_Position.x -= speed * elapsedTime;
 
 
-            m_Sprite = Sprite(m_TextureLeft, rectSourceSprite);
+			m_Sprite = Sprite(m_TextureLeft, rectSourceSprite);
 
 		}
 		//Used to ensure character doesn't move past boundary
@@ -167,8 +167,7 @@ void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 		{
 			m_Position.x += speed * elapsedTime;
 
-
-            m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
+			m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
 
 		}
 		//Used to ensure character doesn't move past boundary

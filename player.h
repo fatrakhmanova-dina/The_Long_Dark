@@ -1,7 +1,7 @@
 #pragma once
 
 #include "player.h"
-#include "item.h"
+//#include "item.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -11,7 +11,7 @@ class Player
 {
 public:
 	//Default Constructor
-	Player(Vector2f position = Vector2f(128,128));
+	Player(Vector2f position = Vector2f(128, 128));
 
 	//Function to get variables
 	FloatRect getPosition();
@@ -30,7 +30,7 @@ public:
 	int getCold();
 	//Will return weight carried
 	int getWeight();
-    //Will return number of shotguns
+	//Will return number of shotguns
 	int getRifle();
 	//Will return number of ammo
 	int getAmmo();
@@ -52,7 +52,7 @@ public:
 	int getPots();
 
 
-    //Returns the spriteSprite getSprite();
+	//Returns the spriteSprite getSprite();
 
 
 	//bool isAttacked();
@@ -61,25 +61,25 @@ public:
 	bool isAlive();
 
 	//Eat food
-	void EatFood(Food f);
+	//void EatFood(Food f);
 
 
 	void ReduceHealth(int reduce);
 	void AddHealth(int h);
 
-    void ReduceCold(int reduse);
-    void AddCold(int add);
+	void ReduceCold(int reduse);
+	void AddCold(int add);
 
-    void ReduceFood(int reduse);
-    void AddFood(int add);
+	void ReduceFood(int reduse);
+	void AddFood(int add);
 
-    void ReduceWater(int reduse);
-    void AddWater(int add);
+	void ReduceWater(int reduse);
+	void AddWater(int add);
 
-    void ReduceWeight(int reduse);
-    void AddWeight(int add);
+	void ReduceWeight(int reduse);
+	void AddWeight(int add);
 
-    void Pickup(std::string name);
+	void Pickup(std::string name);
 	// Moving functions
 	void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
 
@@ -104,8 +104,8 @@ protected:
 	Vector2f m_Position;
 	float goal_PositionX;
 	float goal_PositionY;
-    float moveTime;
-    int speed;
+	float moveTime;
+	int speed;
 	// The hunger bar
 	int Food;
 	int maxFood;

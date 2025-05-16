@@ -1,3 +1,4 @@
+#pragma once
 #include "player.h"
 //Constructor
 Player::Player(Vector2f position)
@@ -5,7 +6,7 @@ Player::Player(Vector2f position)
 	Health = 100;
 	maxHealth = 100;
 
-    Cold = 100;
+	Cold = 100;
 	maxCold = 100;
 
 	Food = 100;
@@ -41,10 +42,10 @@ Player::Player(Vector2f position)
 	RightPressed = false;
 
 	// load all correct textures
-	//m_TextureUp.loadFromFile("graphics/player/up.png");
-	//m_TextureDown.loadFromFile("graphics/player/down.png");
-	//m_TextureLeft.loadFromFile("graphics/player/left.png");
-	//m_TextureRight.loadFromFile("graphics/player/right.png");
+	m_TextureUp.loadFromFile("up.png");
+	m_TextureDown.loadFromFile("down.png");
+	m_TextureLeft.loadFromFile("left.png");
+	m_TextureRight.loadFromFile("right.png");
 
 	// create rect to navigate through the spriresheet
 	rectSourceSprite = sf::IntRect(0, 0, 64, 64);
@@ -63,7 +64,7 @@ void Player::AddHealth(int h)
 	Health = Health + h;
 	//if health exceeds the max, set it to maxHealth
 	if (Health > maxHealth)
-    {
+	{
 		Health = maxHealth;
 	}
 }
@@ -74,7 +75,7 @@ void Player::ReduceHealth(int red)
 
 	//if health exceeds the max, set it to maxHealth
 	if (Health < 0)
-    {
+	{
 		Health = 0;
 	}
 }
@@ -84,7 +85,7 @@ void Player::AddCold(int add)
 	Cold = Cold + add;
 	//if health exceeds the max, set it to maxHealth
 	if (Cold > maxCold)
-    {
+	{
 		Cold = maxCold;
 	}
 }
@@ -96,7 +97,7 @@ void Player::ReduceCold(int red)
 
 	//if health exceeds the max, set it to maxHealth
 	if (Cold < 0)
-    {
+	{
 		Cold = 0;
 	}
 }
@@ -107,7 +108,7 @@ void Player::AddFood(int add)
 	Food = Food + add;
 	//if health exceeds the max, set it to maxHealth
 	if (Food > maxFood)
-    {
+	{
 		Food = maxFood;
 	}
 }
@@ -118,7 +119,7 @@ void Player::ReduceFood(int red)
 
 	//if health exceeds the max, set it to maxHealth
 	if (Food < 0)
-    {
+	{
 		Food = 0;
 	}
 }
@@ -130,7 +131,7 @@ void Player::AddWater(int add)
 	Water = Water + add;
 	//if health exceeds the max, set it to maxHealth
 	if (Water > maxWater)
-    {
+	{
 		Water = maxWater;
 	}
 }
@@ -141,7 +142,7 @@ void Player::ReduceWater(int red)
 
 	//if health exceeds the max, set it to maxHealth
 	if (Water < 0)
-    {
+	{
 		Water = 0;
 	}
 }
@@ -155,7 +156,7 @@ void Player::AddWeight(int add)
 
 	//if health exceeds the max, set it to maxHealth
 	if (Weight > maxWeight)
-    {
+	{
 		Weight = maxWeight;
 	}
 }
@@ -166,7 +167,7 @@ void Player::ReduceWeight(int red)
 
 	//if health exceeds the max, set it to maxHealth
 	if (Weight < 0)
-    {
+	{
 		Weight = 0;
 	}
 }
@@ -174,77 +175,77 @@ void Player::ReduceWeight(int red)
 
 int Player::getHealth()
 {
-    return Health;
+	return Health;
 }
 
 int Player::getFood()
 {
-    return Food;
+	return Food;
 }
 
 int Player::getWater()
 {
-    return Water;
+	return Water;
 }
 
 int Player::getCold()
 {
-    return Cold;
+	return Cold;
 }
 
 int Player::getWeight()
 {
-    return Weight;
+	return Weight;
 }
 
 int Player::getRifle()
 {
-    return rifle;
+	return rifle;
 }
 
 int Player::getAmmo()
 {
-    return ammo;
+	return ammo;
 }
 
 int Player::getMatches()
 {
-    return match;
+	return match;
 }
 
 int Player::getStick()
 {
-    return stick;
+	return stick;
 }
 
 int Player::getCans()
 {
-    return can;
+	return can;
 }
 
 int Player::getSodas()
 {
-    return soda;
+	return soda;
 }
 
 int Player::getRawMeat()
 {
-    return raw_meat;
+	return raw_meat;
 }
 
 int Player::getCookedMeat()
 {
-    return cooked_meat;
+	return cooked_meat;
 }
 
 int Player::getWaterHeld()
 {
-    return water_held;
+	return water_held;
 }
 
 int Player::getPots()
 {
-    return pot;
+	return pot;
 }
 
 
@@ -256,7 +257,7 @@ FloatRect Player::getPosition()
 
 Sprite Player::getSprite()
 {
-    return m_Sprite;
+	return m_Sprite;
 }
 
 Vector2f Player::getCenter()
@@ -269,10 +270,10 @@ Vector2f Player::getCenter()
 
 bool Player::isAlive()
 {
-    if (Health > 0)
-        return true;
-    else
-        return false;
+	if (Health > 0)
+		return true;
+	else
+		return false;
 }
 
 
@@ -336,24 +337,28 @@ void Player::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 		if (UpPressed && !(m_Position.y - 128 < 0))
 		{
 			goal_PositionY = m_Position.y - 128;
+			m_Sprite = Sprite(m_TextureUp, rectSourceSprite);
 			//set to U to allow continuous movement up
 			move = 'U';
 		}
 		else if (DownPressed && m_Position.y + 128 < mapBounds.y)
 		{
 			goal_PositionY = m_Position.y + 128;
+			m_Sprite = Sprite(m_TextureDown, rectSourceSprite);
 			//set to D to allow continuous movement down
 			move = 'D';
 		}
 		else if (LeftPressed && !(m_Position.x - 128 < 0))
 		{
 			goal_PositionX = m_Position.x - 128;
+			m_Sprite = Sprite(m_TextureLeft, rectSourceSprite);
 			//set to L to allow continuous movement left
 			move = 'L';
 		}
 		else if (RightPressed && m_Position.x + 128 < mapBounds.x)
 		{
 			goal_PositionX = m_Position.x + 128;
+			m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
 			//set to R to allow continuous movement right
 			move = 'R';
 		}
@@ -405,7 +410,7 @@ void Player::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 		{
 			m_Position.x = goal_PositionX;
 
-        }
+		}
 	}
 	if (move == 'R')
 	{

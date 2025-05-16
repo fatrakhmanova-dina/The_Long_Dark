@@ -32,7 +32,6 @@ Tilemap::Tilemap()
 					terrain = Tile::terrainType::SNOW;
 					break;
 				default:
-					std::cout << "No terrain type for character: " << t << "at position x: " << tilePosition.x << " y: " << tilePosition.y; // debug
 					break;
 				}
 

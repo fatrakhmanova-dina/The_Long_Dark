@@ -4,6 +4,7 @@
 
 #include "player.h"
 #include "tilemap.h"
+#include "mob.h"
 
 #include <iostream>
 #include<vector>
@@ -66,11 +67,11 @@ private:
 	Player* pPlayer;
 
 	// create a list of pointers to mobs(deers and wolfes)
-//	std::list<Mob*> players;
+	std::list<Mob*> Mobs;
 //	std::list<Item*> players;
 
 	// Iterators for the lists
-//	std::list<Mob*>::const_iterator iter;
+	std::list<Mob*>::const_iterator iter;
 //	std::list<Item*>::const_iterator iter;
 
 	/********** HUD *********/

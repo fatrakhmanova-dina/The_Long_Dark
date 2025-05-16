@@ -87,9 +87,11 @@ Engine::Engine()
 						return;
 					}
 					break;
-					// If it's an enemy
-//				case '2':
-//					break;
+				case '2':
+					// Create a new mobs in position as text file
+					Mob * mob = new Mob(objectPosition);
+					Mobs.push_back(mob); // push it to the mobs list
+					break;
 				}
 				// next tile to the right (each tile is 128 pixels)
 				objectPosition.x += 128;
@@ -105,7 +107,9 @@ Engine::Engine()
 		return;
 	}
 
-	// Close the object
+	/////////Here should be all actions with items
+
+
 	objectFile.close();
 
 	setupUI();
@@ -212,10 +216,11 @@ void Engine::run()
 		}*/
 
 		////////////Move mobs
-		/*for (iter = Mob.begin(); iter != Mob.end(); ++iter)
+		for (iter = Mobs.begin(); iter != Mobs.end(); ++iter)
 		{
 			(*iter)->Movement(dtAsSeconds, m_TimeAsSeconds, mapBounds);
-		}*/
+		}
+
 		pPlayer->Movement(dtAsSeconds, m_TimeAsSeconds, mapBounds);
 
 		std::vector<std::vector<Tile*>> map = (tileMap->getMap());

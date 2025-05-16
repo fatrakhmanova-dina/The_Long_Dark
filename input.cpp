@@ -1,12 +1,16 @@
-#include "Engine.h"
+#include "engine.h"
 
 void Engine::input()
 {
-	//Event variable
-	Event event;
+    //Event variable
+    Event event;
 
-	while (m_Window.pollEvent(event))
-	{
+    while (m_Window.pollEvent(event))
+    {
+        if (Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            m_Window.close();
+        }
         //Allow player to move using WASD
         if (Keyboard::isKeyPressed(Keyboard::W))
         {
@@ -43,5 +47,5 @@ void Engine::input()
         {
             pPlayer->stopRight();
         }
-	}
+    }
 }
