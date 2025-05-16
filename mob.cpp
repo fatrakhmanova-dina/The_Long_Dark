@@ -41,7 +41,7 @@ Mob::Mob(Vector2f position)
 }
 
 
-void Enemy::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
+void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 {
 	//Decide where to move randomly, unless player is within sight,
 	//in which case, attempt to move to player.

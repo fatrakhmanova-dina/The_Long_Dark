@@ -27,7 +27,7 @@ protected:
 
 public:
     virtual bool IsHostile();
-    virtual void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
+    void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
     virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition);
 
 
