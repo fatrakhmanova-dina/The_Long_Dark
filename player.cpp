@@ -262,7 +262,7 @@ Vector2f Player::getCenter()
 
 
 
-bool isAlive()
+bool Player::isAlive()
 {
     if (Health > 0)
         return true;

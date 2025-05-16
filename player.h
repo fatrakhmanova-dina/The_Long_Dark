@@ -12,8 +12,6 @@ class Player
 public:
 	//Default Constructor
 	Player(Vector2f position = Vector2f(128,128));
-	//Function to move
-	//virtual void Movement(float elapsedTime, float totalTime, Vector2f mapBounds) = 0;
 
 	//Function to get variables
 	FloatRect getPosition();
@@ -87,11 +85,14 @@ public:
 	void moveRight();
 	void moveUp();
 	void moveDown();
+	void stopLeft();
+	void stopRight();
+	void stopDown();
+	void stopUp();
 
 
 
 
-	//void Spawn(int h, int mh, int l, int d, float x, float y);
 protected:
 	// The player health
 	int Health;
