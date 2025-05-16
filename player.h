@@ -1,6 +1,7 @@
 #pragma once
 
 #include "player.h"
+#include "item.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -15,7 +16,12 @@ public:
 	//virtual void Movement(float elapsedTime, float totalTime, Vector2f mapBounds) = 0;
 
 	//Function to get variables
-	Vector2i getPosition();
+	FloatRect getPosition();
+
+	Sprite getSprite();
+
+	//Function to get center of object
+	Vector2f getCenter();
 
 	int getHealth();
 	//Will return hunger bar
@@ -48,8 +54,8 @@ public:
 	int getPots();
 
 
-    //Returns the sprite
-	Sprite getSprite();
+    //Returns the spriteSprite getSprite();
+
 
 	//bool isAttacked();
 
@@ -57,7 +63,7 @@ public:
 	bool isAlive();
 
 	//Eat food
-	void EatFood();
+	void EatFood(Food f);
 
 
 	void ReduceHealth(int reduce);
@@ -70,7 +76,7 @@ public:
     void AddFood(int add);
 
     void ReduceWater(int reduse);
-    void AddFood(int add);
+    void AddWater(int add);
 
     void ReduceWeight(int reduse);
     void AddWeight(int add);
@@ -92,13 +98,13 @@ protected:
 	// The max health value the player can have
 	int maxHealth;
 	// The current position of player
-	Vector2i m_Position;
+	Vector2f m_Position;
 	// The hunger bar
 	int Food;
 	int maxFood;
 	// The water bar
 	int Water;
-	int MaxWater;
+	int maxWater;
 	// The cool bar
 	int Cold;
 	int maxCold;
@@ -128,7 +134,7 @@ protected:
 	Texture m_TextureLeft;
 	Texture m_TextureRight;
 
-	IntRect rectSourceSprite;
+	FloatRect rectSourceSprite;
 
 	//Used to determine which way to move each movement call
 	char move;

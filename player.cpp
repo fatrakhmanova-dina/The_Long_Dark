@@ -25,7 +25,7 @@ Player::Player(Vector2f position)
 	soda = 0;
 	raw_meat = 0;
 	cooked_meat = 0;
-	water = 0;
+	water_held = 0;
 	pot = 0;
 
 	m_Position = position;
@@ -53,7 +53,7 @@ Player::Player(Vector2f position)
 }
 
 //Add health to the player
-void Player::addHealth(float h)
+void Player::AddHealth(float h)
 {
 	Health = Health + h;
 	//if health exceeds the max, set it to maxHealth
@@ -63,7 +63,7 @@ void Player::addHealth(float h)
 	}
 }
 
-void Player::reduceHealth(float red)
+void Player::ReduceHealth(float red)
 {
 	Health = Health - red;
 
@@ -74,7 +74,7 @@ void Player::reduceHealth(float red)
 	}
 }
 
-void Player::addCold(float add)
+void Player::AddCold(float add)
 {
 	Cold = Cold + add;
 	//if health exceeds the max, set it to maxHealth
@@ -85,7 +85,7 @@ void Player::addCold(float add)
 }
 
 
-void Player::reduceCold(float red)
+void Player::ReduceCold(float red)
 {
 	Cold = Cold - red;
 
@@ -97,7 +97,7 @@ void Player::reduceCold(float red)
 }
 
 
-void Player::addFood(float add)
+void Player::AddFood(float add)
 {
 	Food = Food + add;
 	//if health exceeds the max, set it to maxHealth
@@ -107,7 +107,7 @@ void Player::addFood(float add)
 	}
 }
 
-void Player::reduceFood(float red)
+void Player::ReduceFood(float red)
 {
 	Food = Food - red;
 
@@ -120,7 +120,7 @@ void Player::reduceFood(float red)
 
 
 
-void Player::addWater(float add)
+void Player::AddWater(float add)
 {
 	Water = Water + add;
 	//if health exceeds the max, set it to maxHealth
@@ -130,7 +130,7 @@ void Player::addWater(float add)
 	}
 }
 
-void Player::reduceWater(float red)
+void Player::ReduceWater(float red)
 {
 	Water = Water - red;
 
@@ -144,7 +144,7 @@ void Player::reduceWater(float red)
 
 
 
-void Player::addWeight(float add)
+void Player::AddWeight(float add)
 {
 	Weight = Weight + add;
 
@@ -155,7 +155,7 @@ void Player::addWeight(float add)
 	}
 }
 
-void Player::reduceWeight(float red)
+void Player::ReduceWeight(float red)
 {
 	Weight = Weight - red;
 
@@ -244,10 +244,22 @@ int Player::getPots()
 
 
 
-Vector2i Player::getPosition()
+FloatRect Player::getPosition()
 {
-    return m_Position;
+	return m_Sprite.getGlobalBounds();
 }
+
+Sprite Player::getSprite()
+{
+    return m_Sprite;
+}
+
+Vector2f Player::getCenter()
+{
+	return m_Position;
+}
+
+
 
 
 bool isAlive()
