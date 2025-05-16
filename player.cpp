@@ -53,7 +53,7 @@ Player::Player(Vector2f position)
 }
 
 //Add health to the player
-void Player::AddHealth(float h)
+void Player::AddHealth(int h)
 {
 	Health = Health + h;
 	//if health exceeds the max, set it to maxHealth
@@ -63,7 +63,7 @@ void Player::AddHealth(float h)
 	}
 }
 
-void Player::ReduceHealth(float red)
+void Player::ReduceHealth(int red)
 {
 	Health = Health - red;
 
@@ -74,7 +74,7 @@ void Player::ReduceHealth(float red)
 	}
 }
 
-void Player::AddCold(float add)
+void Player::AddCold(int add)
 {
 	Cold = Cold + add;
 	//if health exceeds the max, set it to maxHealth
@@ -85,7 +85,7 @@ void Player::AddCold(float add)
 }
 
 
-void Player::ReduceCold(float red)
+void Player::ReduceCold(int red)
 {
 	Cold = Cold - red;
 
@@ -97,7 +97,7 @@ void Player::ReduceCold(float red)
 }
 
 
-void Player::AddFood(float add)
+void Player::AddFood(int add)
 {
 	Food = Food + add;
 	//if health exceeds the max, set it to maxHealth
@@ -107,7 +107,7 @@ void Player::AddFood(float add)
 	}
 }
 
-void Player::ReduceFood(float red)
+void Player::ReduceFood(int red)
 {
 	Food = Food - red;
 
@@ -120,7 +120,7 @@ void Player::ReduceFood(float red)
 
 
 
-void Player::AddWater(float add)
+void Player::AddWater(int add)
 {
 	Water = Water + add;
 	//if health exceeds the max, set it to maxHealth
@@ -130,7 +130,7 @@ void Player::AddWater(float add)
 	}
 }
 
-void Player::ReduceWater(float red)
+void Player::ReduceWater(int red)
 {
 	Water = Water - red;
 
@@ -144,7 +144,7 @@ void Player::ReduceWater(float red)
 
 
 
-void Player::AddWeight(float add)
+void Player::AddWeight(int add)
 {
 	Weight = Weight + add;
 
@@ -155,7 +155,7 @@ void Player::AddWeight(float add)
 	}
 }
 
-void Player::ReduceWeight(float red)
+void Player::ReduceWeight(int red)
 {
 	Weight = Weight - red;
 
