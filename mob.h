@@ -14,14 +14,22 @@ protected:
 
     Vector2f m_Position;
 
+	float goal_PositionX;
+	float goal_PositionY;
+    float moveTime;
+
 	Sprite m_Sprite;
 
-	Texture m_Texture;
+	IntRect rectSourceSprite;
 
-	FloatRect rectSourceSprite;
+	//Random number used to determine which direction to go
+	int randnum;
 
 public:
     virtual bool IsHostile();
+    virtual void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
+    virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition);
+
 
 };
 
