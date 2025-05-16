@@ -141,7 +141,7 @@ protected:
 	Texture m_TextureLeft;
 	Texture m_TextureRight;
 
-	FloatRect rectSourceSprite;
+	IntRect rectSourceSprite;
 
 	//Used to determine which way to move each movement call
 	char move;
