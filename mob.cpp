@@ -40,6 +40,22 @@ Mob::Mob(Vector2f position)
 	m_Sprite.setPosition(m_Position);
 }
 
+FloatRect Mob::getPosition()
+{
+	return m_Sprite.getGlobalBounds();
+}
+
+Sprite Mob::getSprite()
+{
+    return m_Sprite;
+}
+
+Vector2f Mob::getCenter()
+{
+	return m_Position;
+}
+
+
 
 void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 {

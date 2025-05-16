@@ -29,6 +29,14 @@ public:
     virtual bool IsHostile();
     void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
     virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition);
+    //Function to get variables
+	FloatRect getPosition();
+
+	Sprite getSprite();
+
+	//Function to get center of object
+	Vector2f getCenter();
+
 
 
 };
