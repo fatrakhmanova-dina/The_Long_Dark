@@ -59,9 +59,6 @@ Vector2f Mob::getCenter()
 
 void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 {
-	//Decide where to move randomly, unless player is within sight,
-	//in which case, attempt to move to player.
-
 	//Check if enough time has passed to allow movement
 	if (moveTime <= totalTime)
 	{
@@ -178,8 +175,6 @@ void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 			m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
 		}
 	}
-
-
 
 	m_Sprite.setOrigin(32, 32);
 	m_Sprite.setPosition(m_Position);

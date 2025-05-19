@@ -4,18 +4,17 @@ Engine::Engine()
 {
 	/***** Game Window and Views *****/
 
-	// Get the width and height of the screen and apply it  to x and y of the resolution variable.
+	// Get size of screen
 	m_Resolution.x = VideoMode::getDesktopMode().width;
 	m_Resolution.y = VideoMode::getDesktopMode().height;
 
-	// Create the m_Window with a title and in full screen and store it in the variable
+	// Create the m_Window
 	m_Window.create(VideoMode(m_Resolution.x, m_Resolution.y), "Can You Survive?", Style::Fullscreen);
 
 	/** Setup the views **/
 	// Main view
 	m_MainView.reset(FloatRect(0, 0, m_Resolution.x, m_Resolution.y));
-	// Blackout view
-	m_BlackoutView.reset(FloatRect(0, 0, m_Resolution.x, m_Resolution.y));
+
 	// HUD view
 	m_HudView.reset(FloatRect(0, 0, m_Resolution.x, m_Resolution.y));
 
@@ -29,14 +28,13 @@ Engine::Engine()
 	// Point tilemap to a new object
 	tileMap = new Tilemap();
 
-	// Save map boundaries for future use such as camera and player block
+	// Save map boundaries
 	mapBounds = tileMap->getMapBounds();
 
 	/***** Characters Properties Set up *****/
 
 	pPlayer = nullptr;
 
-	// Create a stream object and open objects.txt file
 	std::ifstream objectFile("objects.txt");
 
 	// Open the text file
@@ -44,7 +42,7 @@ Engine::Engine()
 	{
 		Vector2f objectPosition(0, 0); // first tile position at 0, 0
 
-		std::string line; // Create a string to access each line of the document
+		std::string line;
 
 		int row = 0; // first row
 
@@ -56,7 +54,7 @@ Engine::Engine()
 			{
 				// Display error to console
 				std::cout << "Row size of objects.txt file cannot be greater than bounds of map.\n";
-				return; // stop program
+				return;
 			}
 			// For each letter in this line
 			for (char& t : line)
@@ -66,14 +64,13 @@ Engine::Engine()
 				{
 					// Displayer error to console
 					std::cout << "Column size of objects.txt file cannot be greater than bounds of map.\n";
-					return; // stop the program
+					return;
 				}
 				// Switch character check if it's....
 				switch (t)
 				{
 					// If it's the player
 				case '1':
-					// If player is pointing to a null pointer, i.e., no player yet
 					if (pPlayer == nullptr)
 					{
 						// Create a new player and point to it
@@ -103,7 +100,7 @@ Engine::Engine()
 	else
 	{
 		// If it can't find the objects.txt file, print an error and close the program
-		std::cout << "Cannot find objects.txt file. Please create a file with objects (player, enemies, collectibles, etc)"; //debug can't find file
+		std::cout << "Cannot find objects.txt file."; //debug can't find file
 		return;
 	}
 
@@ -132,7 +129,7 @@ void Engine::run()
 
 		input(); // Input implementation
 
-		//Set stamina and health bar size based on stamina and health
+		//Set health,water,food bar size based on health,water,food
 		HealthBar.setSize(Vector2f(2 * pPlayer->getHealth(), HealthBarHeight));
 		FoodBar.setSize(Vector2f(2 * pPlayer->getFood(), FoodBarHeight));
 		WaterBar.setSize(Vector2f(2 * pPlayer->getWater(), WaterBarHeight));
@@ -149,13 +146,13 @@ void Engine::run()
 		// if player x position is less the center of screen width
 		if (pPlayer->getCenter().x < (VideoMode::getDesktopMode().width / 2 - 64))
 		{
-			// camera center will stay there instead (as in, it will not outside the bounds of the map)
+			// camera center will stay there instead
 			cameraCenter.x = (VideoMode::getDesktopMode().width / 2) - 64;
 		}
 		// if player x position is more than the map bound width minus center of screen width 
 		else if (pPlayer->getCenter().x > (mapBounds.x - VideoMode::getDesktopMode().width / 2) - 64)
 		{
-			// camera center will stay there instead (as in, it will not outside the bounds of the map)
+			// camera center will stay there instead
 			cameraCenter.x = (mapBounds.x - VideoMode::getDesktopMode().width / 2) - 64;
 		}
 		else
@@ -165,13 +162,13 @@ void Engine::run()
 		// if player x position is less the center of screen height
 		if (pPlayer->getCenter().y < (VideoMode::getDesktopMode().height / 2) - 64)
 		{
-			// camera center will stay there instead (as in, it will not outside the bounds of the map)
+			// camera center will stay there instead
 			cameraCenter.y = (VideoMode::getDesktopMode().height / 2) - 64;
 		}
 		// if player x position is more than the map bound width minus center of screen height 
 		else if (pPlayer->getCenter().y > (mapBounds.y - VideoMode::getDesktopMode().height / 2) - 64)
 		{
-			// camera center will stay there instead (as in, it will not outside the bounds of the map)
+			// camera center will stay there instead
 			cameraCenter.y = (mapBounds.y - VideoMode::getDesktopMode().height / 2) - 64;
 		}
 		else
@@ -235,10 +232,10 @@ void Engine::run()
 				m_Window.draw(map[i][j]->getSprite());
 			}
 		}
-	
+
 		///////////Here should be some logic about mobs actions
 
-	    draw();
-	    m_Window.display();
-    }
+		draw();
+		m_Window.display();
+	}
 }

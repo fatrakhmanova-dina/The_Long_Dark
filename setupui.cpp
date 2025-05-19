@@ -11,8 +11,6 @@ void Engine::setupUI()
 	//All the text used for the game
 	font.loadFromFile("KOMIKAP_.ttf");
 
-	//introText font
-
 	HealthText.setFont(font);
 	HealthText.setString("Health");
 	HealthText.setCharacterSize(25);

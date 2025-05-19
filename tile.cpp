@@ -36,14 +36,6 @@ void Tile::ChangeType(Tile::terrainType terrain)
 	}
 }
 
-//FloatRect Tile::getPosition(){
-//	return m_Sprite.getGlobalBounds();
-//}
-//
-//Vector2f Tile::getCenter(){
-//	return m_Position;
-//}
-//
 Sprite Tile::getSprite()
 {
 	return m_Sprite;

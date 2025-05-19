@@ -73,7 +73,6 @@ void Player::ReduceHealth(int red)
 {
 	Health = Health - red;
 
-	//if health exceeds the max, set it to maxHealth
 	if (Health < 0)
 	{
 		Health = 0;
@@ -83,7 +82,7 @@ void Player::ReduceHealth(int red)
 void Player::AddCold(int add)
 {
 	Cold = Cold + add;
-	//if health exceeds the max, set it to maxHealth
+
 	if (Cold > maxCold)
 	{
 		Cold = maxCold;
@@ -95,7 +94,6 @@ void Player::ReduceCold(int red)
 {
 	Cold = Cold - red;
 
-	//if health exceeds the max, set it to maxHealth
 	if (Cold < 0)
 	{
 		Cold = 0;
@@ -106,7 +104,7 @@ void Player::ReduceCold(int red)
 void Player::AddFood(int add)
 {
 	Food = Food + add;
-	//if health exceeds the max, set it to maxHealth
+
 	if (Food > maxFood)
 	{
 		Food = maxFood;
@@ -117,7 +115,6 @@ void Player::ReduceFood(int red)
 {
 	Food = Food - red;
 
-	//if health exceeds the max, set it to maxHealth
 	if (Food < 0)
 	{
 		Food = 0;
@@ -129,7 +126,7 @@ void Player::ReduceFood(int red)
 void Player::AddWater(int add)
 {
 	Water = Water + add;
-	//if health exceeds the max, set it to maxHealth
+
 	if (Water > maxWater)
 	{
 		Water = maxWater;
@@ -140,7 +137,6 @@ void Player::ReduceWater(int red)
 {
 	Water = Water - red;
 
-	//if health exceeds the max, set it to maxHealth
 	if (Water < 0)
 	{
 		Water = 0;
@@ -154,7 +150,6 @@ void Player::AddWeight(int add)
 {
 	Weight = Weight + add;
 
-	//if health exceeds the max, set it to maxHealth
 	if (Weight > maxWeight)
 	{
 		Weight = maxWeight;
@@ -165,7 +160,6 @@ void Player::ReduceWeight(int red)
 {
 	Weight = Weight - red;
 
-	//if health exceeds the max, set it to maxHealth
 	if (Weight < 0)
 	{
 		Weight = 0;

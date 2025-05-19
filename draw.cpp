@@ -3,7 +3,7 @@
 void Engine::draw()
 {
 
-// Iterate through the mobs
+	// Iterate through the mobs
 	m_Window.draw((pPlayer)->getSprite());
 
 	for (iter = Mobs.begin(); iter != Mobs.end(); ++iter)
@@ -11,8 +11,6 @@ void Engine::draw()
 		m_Window.draw((*iter)->getSprite());
 
 	}
-
-	m_Window.setView(m_BlackoutView);
 
 	//HUD view used for elements that don't move
 

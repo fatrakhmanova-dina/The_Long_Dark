@@ -1,7 +1,4 @@
 #pragma once
-
-#ifndef TILEMAP_H
-#define TILEMAP_H
 #include "tile.h"
 #include <iostream>
 #include <fstream>
@@ -26,4 +23,3 @@ protected:
 
 	Vector2f m_bounds;
 };
-#endif

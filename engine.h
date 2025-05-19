@@ -1,6 +1,4 @@
 #pragma once
-#ifndef ENGINE_H
-#define ENGINE_H
 
 #include "player.h"
 #include "tilemap.h"
@@ -40,7 +38,6 @@ private:
 
 	RenderWindow m_Window; // main window
 	View m_MainView; // main view
-	View m_BlackoutView; // view for the dark screen
 	View m_HudView; // HUD view
 
 	/****** Game Properties *******/
@@ -52,11 +49,6 @@ private:
 	// random num variable helper
 	int randnum;
 
-	/****** Player Properties *******/
-
-//	float staminaDecrease;
-//	float m_AttackTimer;
-//	float m_EatTimer;
 	/*********** Set up game objects **********/
 	Tilemap* tileMap;
 
@@ -68,11 +60,9 @@ private:
 
 	// create a list of pointers to mobs(deers and wolfes)
 	std::list<Mob*> Mobs;
-//	std::list<Item*> players;
 
 	// Iterators for the lists
 	std::list<Mob*>::const_iterator iter;
-//	std::list<Item*>::const_iterator iter;
 
 	/********** HUD *********/
 
@@ -123,4 +113,3 @@ private:
 //	float ColdBarStartWidth = 200;
 //	float ColdBarHeight = 40;
 };
-#endif

@@ -7,6 +7,7 @@ void Engine::input()
 
     while (m_Window.pollEvent(event))
     {
+        //Close the window if it is need
         if (Keyboard::isKeyPressed(Keyboard::Escape))
         {
             m_Window.close();

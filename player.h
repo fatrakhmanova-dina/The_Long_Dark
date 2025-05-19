@@ -79,7 +79,7 @@ public:
 	void ReduceWeight(int reduse);
 	void AddWeight(int add);
 
-	void Pickup(std::string name);
+	//void Pickup(std::string name);
 	// Moving functions
 	void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
 

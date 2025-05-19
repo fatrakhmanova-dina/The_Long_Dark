@@ -13,7 +13,7 @@ Tilemap::Tilemap()
 
 		int row = 0; // starts on row 0
 
-		// for each line in the text file
+		// for each line
 		for (line; getline(mapFile, line);)
 		{
 			map.push_back(std::vector<Tile*>()); // push back a new vector of tiles
@@ -25,7 +25,7 @@ Tilemap::Tilemap()
 			{
 				Tile::terrainType terrain = Tile::terrainType::SNOW; //default
 
-				// each character represents a specific terrain type
+				//terrain types
 				switch (t)
 				{
 				case '0':
@@ -47,7 +47,7 @@ Tilemap::Tilemap()
 
 		m_bounds.x = line.size();
 	}
-	else std::cout << "Cannot find file."; //debug can't find file
+	else std::cout << "Cannot find file.";
 
 	mapFile.close();
 

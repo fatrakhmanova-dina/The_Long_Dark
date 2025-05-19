@@ -1,6 +1,4 @@
 #pragma once
-#ifndef TILE_H
-#define TILE_H
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -34,4 +32,3 @@ protected:
 	Vector2f m_Position;
 	Vector2f m_Resolution;
 };
-#endif
