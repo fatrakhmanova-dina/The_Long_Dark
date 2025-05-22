@@ -21,10 +21,9 @@ Player::Player(Vector2f position)
 
 	moveTime = 0;
 	speed = 128;
+	m_Position = position;
 	goal_PositionX = m_Position.x;
 	goal_PositionY = m_Position.y;
-
-	m_Position = position;
 
 	UpPressed = false;
 	DownPressed = false;
