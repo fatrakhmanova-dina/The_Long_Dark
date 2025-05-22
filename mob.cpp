@@ -14,30 +14,31 @@ bool Deer::IsHostile()
 //Constructor
 Mob::Mob(Vector2f position)
 {
-	Health = 75;
-	maxHealth = 75;
+  Health = 75;
+  maxHealth = 75;
 
-	speed = 128;
-    moveTime = 0;
+  speed = 128;
+  moveTime = 0;
 
-	m_Position = position;
-	goal_PositionX = m_Position.x;
-	goal_PositionY = m_Position.y;
+  m_Position = position;
+  goal_PositionX = m_Position.x;
+  goal_PositionY = m_Position.y;
 
-	// load all correct textures
-	//m_TextureUp.loadFromFile("graphics/enemy/up.png");
-	//m_TextureDown.loadFromFile("graphics/enemy/down.png");
-	//m_TextureLeft.loadFromFile("graphics/enemy/left.png");
-	//m_TextureRight.loadFromFile("graphics/enemy/right.png");
+  // load all correct textures
+  m_TextureUp.loadFromFile("mup.png");
+  m_TextureDown.loadFromFile("mdown.png");
+  m_TextureLeft.loadFromFile("mleft.png");
+  m_TextureRight.loadFromFile("mright.png");
 
-	// create rect to navigate through the spriresheet
-	rectSourceSprite = sf::IntRect(0, 0, 64, 64);
+  // create rect to navigate through the spriresheet
+  rectSourceSprite = sf::IntRect(0, 0, 64, 64);
 
-	m_Sprite.setTexture(m_TextureRight);
-	m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
+  m_Sprite.setTexture(m_TextureRight);
+  m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
 
-	m_Sprite.setOrigin(32, 32);
-	m_Sprite.setPosition(m_Position);
+  m_Sprite.setOrigin(32, 32);
+  m_Sprite.setPosition(m_Position);
+}
 }
 
 FloatRect Mob::getPosition()

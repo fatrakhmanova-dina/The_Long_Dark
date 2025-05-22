@@ -15,19 +15,25 @@ protected:
     int speed;
     Vector2f m_Position;
 
-	float goal_PositionX;
-	float goal_PositionY;
+    float goal_PositionX;
+    float goal_PositionY;
     float moveTime;
 
-	Sprite m_Sprite;
+    Sprite m_Sprite;
 
-	IntRect rectSourceSprite;
+    //Mob texture
+    Texture m_TextureUp;
+    Texture m_TextureDown;
+    Texture m_TextureLeft;
+    Texture m_TextureRight;
 
-	//Random number used to determine which direction to go
-	int randnum;
+    IntRect rectSourceSprite;
+
+    //Random number used to determine which direction to go
+    int randnum;
 
 public:
-
+    Mob(Vector2f position = Vector2f(128, 128));
     void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
     virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) = 0;
     //Function to get variables
