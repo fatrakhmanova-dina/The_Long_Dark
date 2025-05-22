@@ -6,9 +6,6 @@ Player::Player(Vector2f position)
 	Health = 100;
 	maxHealth = 100;
 
-	Cold = 100;
-	maxCold = 100;
-
 	Food = 100;
 	maxFood = 100;
 
@@ -18,16 +15,9 @@ Player::Player(Vector2f position)
 	Weight = 100;
 	maxWeight = 100;
 
-	rifle = 0;
-	ammo = 0;
-	match = 0;
-	stick = 0;
 	can = 0;
 	soda = 0;
-	raw_meat = 0;
-	cooked_meat = 0;
-	water_held = 0;
-	pot = 0;
+	meat = 0;
 
 	moveTime = 0;
 	speed = 128;
@@ -78,28 +68,6 @@ void Player::ReduceHealth(int red)
 		Health = 0;
 	}
 }
-
-void Player::AddCold(int add)
-{
-	Cold = Cold + add;
-
-	if (Cold > maxCold)
-	{
-		Cold = maxCold;
-	}
-}
-
-
-void Player::ReduceCold(int red)
-{
-	Cold = Cold - red;
-
-	if (Cold < 0)
-	{
-		Cold = 0;
-	}
-}
-
 
 void Player::AddFood(int add)
 {
@@ -182,34 +150,14 @@ int Player::getWater()
 	return Water;
 }
 
-int Player::getCold()
-{
-	return Cold;
-}
-
 int Player::getWeight()
 {
 	return Weight;
 }
 
-int Player::getRifle()
+int Player::getAxe()
 {
-	return rifle;
-}
-
-int Player::getAmmo()
-{
-	return ammo;
-}
-
-int Player::getMatches()
-{
-	return match;
-}
-
-int Player::getStick()
-{
-	return stick;
+	return axe;
 }
 
 int Player::getCans()
@@ -222,26 +170,10 @@ int Player::getSodas()
 	return soda;
 }
 
-int Player::getRawMeat()
+int Player::getMeat()
 {
-	return raw_meat;
+	return meat;
 }
-
-int Player::getCookedMeat()
-{
-	return cooked_meat;
-}
-
-int Player::getWaterHeld()
-{
-	return water_held;
-}
-
-int Player::getPots()
-{
-	return pot;
-}
-
 
 
 FloatRect Player::getPosition()
@@ -260,8 +192,6 @@ Vector2f Player::getCenter()
 }
 
 
-
-
 bool Player::isAlive()
 {
 	if (Health > 0)
@@ -269,9 +199,6 @@ bool Player::isAlive()
 	else
 		return false;
 }
-
-
-
 
 
 //Movement section

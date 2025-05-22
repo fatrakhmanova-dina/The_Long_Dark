@@ -9,7 +9,7 @@ Engine::Engine()
 	m_Resolution.y = VideoMode::getDesktopMode().height;
 
 	// Create the m_Window
-	m_Window.create(VideoMode(m_Resolution.x, m_Resolution.y), "Can You Survive?", Style::Fullscreen);
+	m_Window.create(VideoMode(m_Resolution.x, m_Resolution.y), "Good luck", Style::Fullscreen);
 
 	/** Setup the views **/
 	// Main view
@@ -71,10 +71,12 @@ Engine::Engine()
 				{
 					// If it's the player
 				case '1':
+				{
 					if (pPlayer == nullptr)
 					{
 						// Create a new player and point to it
 						pPlayer = new Player(objectPosition);
+						std::cout << objectPosition.x << " " << objectPosition.y <<  std::endl;
 					}
 					// If there is already a player created
 					else
@@ -84,12 +86,39 @@ Engine::Engine()
 						return;
 					}
 					break;
+				}
 				case '2':
+				{
 					// Create a new mobs in position as text file
-					Mob * mob = new Mob(objectPosition);
+					Mob* mob = new Mob(objectPosition);
 					Mobs.push_back(mob); // push it to the mobs list
 					break;
 				}
+				case '4':
+				{
+					Item* item = new Item(4, objectPosition);
+					Items.push_back(item);
+					break;
+				}
+				case '5':
+				{
+					Item* item = new Item(5, objectPosition);
+					Items.push_back(item);
+					break;
+				}
+				case '6':
+				{
+					Item* item = new Item(6, objectPosition);
+					Items.push_back(item);
+					break;
+				}
+				case '7':
+				{
+					Item* item = new Item(7, objectPosition);
+					Items.push_back(item);
+					break;
+				}
+			    }
 				// next tile to the right (each tile is 128 pixels)
 				objectPosition.x += 128;
 			}

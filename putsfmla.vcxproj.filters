@@ -67,9 +67,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="menu.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
     <Image Include="snow.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
@@ -95,6 +92,18 @@
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="mup.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="axe.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="can.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="meat.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="soda.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>

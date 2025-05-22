@@ -26,31 +26,16 @@ public:
 	int getFood();
 	//Will return water bar
 	int getWater();
-	//Will return cool bar
-	int getCold();
-	//Will return weight carried
+	//Will return weight
 	int getWeight();
-	//Will return number of shotguns
-	int getRifle();
-	//Will return number of ammo
-	int getAmmo();
-	//Will return number of matches
-	int getMatches();
-	//Will return number of sticks
-	int getStick();
+	//Will return number of axe
+	int getAxe();
 	//Will return number of cans
 	int getCans();
 	//Will return number of sodas
 	int getSodas();
-	//Will return number of raw meat
-	int getRawMeat();
-	//Will return number of cooked meat
-	int getCookedMeat();
-	//Will return number of water held
-	int getWaterHeld();
-	//Will return number of pots
-	int getPots();
-
+	//Will return number of meat
+	int getMeat();
 
 	//Returns the spriteSprite getSprite();
 
@@ -66,9 +51,6 @@ public:
 
 	void ReduceHealth(int reduce);
 	void AddHealth(int h);
-
-	void ReduceCold(int reduse);
-	void AddCold(int add);
 
 	void ReduceFood(int reduse);
 	void AddFood(int add);
@@ -92,9 +74,6 @@ public:
 	void stopDown();
 	void stopUp();
 
-
-
-
 protected:
 	// The player health
 	int Health;
@@ -112,25 +91,15 @@ protected:
 	// The water bar
 	int Water;
 	int maxWater;
-	// The cool bar
-	int Cold;
-	int maxCold;
 	// The weight player can carry
 	int Weight;
 	int maxWeight;
 
 	//All the items player can have, the current number of items
-	int rifle;
-	int ammo;
-	int match;
-	int stick;
+	int axe;
 	int can;
 	int soda;
-	int raw_meat;
-	int cooked_meat;
-	int water_held;
-	int pot;
-
+	int meat;
 
 	//Player sprite
 	Sprite m_Sprite;

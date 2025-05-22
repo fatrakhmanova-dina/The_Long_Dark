@@ -3,6 +3,7 @@
 #include "player.h"
 #include "tilemap.h"
 #include "mob.h"
+#include "item.h"
 
 #include <iostream>
 #include<vector>
@@ -64,6 +65,8 @@ private:
 	// Iterators for the lists
 	std::list<Mob*>::const_iterator iter;
 
+	std::list<Item*> Items;
+	std::list<Item*>::const_iterator iter1;
 	/********** HUD *********/
 
 

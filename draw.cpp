@@ -9,7 +9,11 @@ void Engine::draw()
 	for (iter = Mobs.begin(); iter != Mobs.end(); ++iter)
 	{
 		m_Window.draw((*iter)->getSprite());
+	}
 
+	for (iter1 = Items.begin(); iter1 != Items.end(); ++iter1)
+	{
+		m_Window.draw((*iter1)->getSprite());
 	}
 
 	//HUD view used for elements that don't move

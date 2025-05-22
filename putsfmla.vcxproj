@@ -163,15 +163,18 @@
     <ClInclude Include="tilemap.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="axe.png" />
+    <Image Include="can.png" />
     <Image Include="down.png" />
     <Image Include="left.png" />
     <Image Include="mdown.png" />
-    <Image Include="menu.png" />
+    <Image Include="meat.png" />
     <Image Include="mleft.png" />
     <Image Include="mright.png" />
     <Image Include="mup.png" />
     <Image Include="right.png" />
     <Image Include="snow.png" />
+    <Image Include="soda.png" />
     <Image Include="up.png" />
   </ItemGroup>
   <ItemGroup>

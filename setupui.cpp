@@ -3,8 +3,6 @@
 
 void Engine::setupUI()
 {
-
-	backgroundTexture.loadFromFile("menu.png");
 	background.setTexture(backgroundTexture);
 	background.setPosition(0, 0);
 
