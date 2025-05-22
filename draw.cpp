@@ -29,4 +29,5 @@ void Engine::draw()
 	m_Window.draw(CansText);
 	m_Window.draw(SodasText);
 	m_Window.draw(MeatText);
+	m_Window.draw(LoseText);
 }

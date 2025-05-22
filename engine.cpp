@@ -165,9 +165,9 @@ void Engine::run()
 		input(); // Input implementation
 
 		//Set health,water,food bar size based on health,water,food
-		HealthBar.setSize(Vector2f(0.1 * pPlayer->getHealth(), HealthBarHeight));
-		FoodBar.setSize(Vector2f(2 * pPlayer->getFood(), FoodBarHeight));
-		WaterBar.setSize(Vector2f(2 * pPlayer->getWater(), WaterBarHeight));
+		HealthBar.setSize(Vector2f(0.01 * pPlayer->getHealth(), HealthBarHeight));
+		FoodBar.setSize(Vector2f(0.002 * pPlayer->getFood(), FoodBarHeight));
+		WaterBar.setSize(Vector2f(0.002 * pPlayer->getWater(), WaterBarHeight));
 
 		//////////Here should be some actions, which is connected with cold, water, food, health amount
 
@@ -293,7 +293,7 @@ void Engine::run()
 			}
 			if (((distance.x < 127 && distance.y < 129) || (distance.x < 129 && distance.y < 127)) && (*iter)->IsHostile())
 			{
-				pPlayer->ReduceHealth(1);
+				pPlayer->ReduceHealth(10);
 			}
 		}
 
@@ -308,6 +308,8 @@ void Engine::run()
 				break;
 			}
 		}
+
+
 
 		CansText.setFont(font);
 		CansText.setString("Cans amount:" + std::to_string(pPlayer->getCans()));
@@ -327,7 +329,29 @@ void Engine::run()
 		MeatText.setFillColor(Color::Black);
 		MeatText.setPosition(1600, 300);
 
+		pPlayer->ReduceFood(3);
+		pPlayer->ReduceWater(3);
+		if (pPlayer->getFood() == 0)
+			pPlayer->ReduceHealth(1);
+		if (pPlayer->getWater() == 0)
+			pPlayer->ReduceHealth(1);
+
+		if (pPlayer->getHealth() == 0)
+		{
+			LoseText.setFont(font);
+			LoseText.setString("You Lose... don't touch keyboard");
+			LoseText.setCharacterSize(100);
+			LoseText.setFillColor(Color::Red);
+			LoseText.setPosition(100, 535);
+		}
+
 		draw();
 		m_Window.display();
+		if (pPlayer->getHealth() == 0)
+		{
+			sf::sleep(sf::seconds(2.f));
+			m_Window.close();
+		}
+
 	}
 }

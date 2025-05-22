@@ -79,7 +79,6 @@ void Engine::input()
                     if (pPlayer->getAxe() == 1)
                     {
                         (*iter)->ReduceHealth(300);
-                        std::cout << "Zdorovie" << (*iter)->getHealth() << std::endl;
                     }
                 }
             }

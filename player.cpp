@@ -4,14 +4,14 @@
 //Constructor
 Player::Player(Vector2f position)
 {
-	Health = 2000;
-	maxHealth = 2000;
+	Health = 20000;
+	maxHealth = 20000;
 
 	Food = 0;
-	maxFood = 100;
+	maxFood = 100000;
 
 	Water = 0;
-	maxWater = 100;
+	maxWater = 100000;
 
 	Weight = 0;
 	maxWeight = 100;

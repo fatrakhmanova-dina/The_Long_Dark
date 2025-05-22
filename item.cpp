@@ -45,21 +45,21 @@ Item::Item(int Type, Vector2f position)
     {
         weight = 5;
         m_Texture.loadFromFile("can.png");
-        food_value = 20;
-        water_value = 10;
+        food_value = 20000;
+        water_value = 10000;
     }
     else if (Type == 6)
     {
         weight = 5;
         m_Texture.loadFromFile("soda.png");
-        food_value = 10;
-        water_value = 20;
+        food_value = 10000;
+        water_value = 20000;
     }
     else if (Type == 7)
     {
         weight = 10;
         m_Texture.loadFromFile("meat.png");
-        food_value = 30;
+        food_value = 30000;
         water_value = 0;
     }
 

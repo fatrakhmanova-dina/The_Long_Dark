@@ -27,12 +27,6 @@ void Engine::setupUI()
 	WaterText.setFillColor(Color::Black);
 	WaterText.setPosition(100, 700);
 
-	LoseText.setFont(font);
-	LoseText.setString("You Lose...");
-	LoseText.setCharacterSize(100);
-	LoseText.setFillColor(Color::Red);
-	LoseText.setPosition(955, 535);
-
 	HealthBar.setFillColor(Color::Green);
 	HealthBar.setPosition(100, 900);
 
