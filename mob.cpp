@@ -1,7 +1,7 @@
 #include "mob.h"
 
 //Constructor
-Mob::Mob(Vector2f position)
+Wolf::Wolf(Vector2f position)
 {
 	Health = 75;
 	maxHealth = 75;
@@ -18,6 +18,35 @@ Mob::Mob(Vector2f position)
 	m_TextureDown.loadFromFile("mdown.png");
 	m_TextureLeft.loadFromFile("mleft.png");
 	m_TextureRight.loadFromFile("mright.png");
+
+	// create rect to navigate through the spriresheet
+	rectSourceSprite = sf::IntRect(0, 0, 64, 64);
+
+	m_Sprite.setTexture(m_TextureRight);
+	m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
+
+	m_Sprite.setOrigin(32, 32);
+	m_Sprite.setPosition(m_Position);
+}
+
+//Constructor
+Deer::Deer(Vector2f position)
+{
+	Health = 75;
+	maxHealth = 75;
+
+	speed = 128;
+	moveTime = 0;
+
+	m_Position = position;
+	goal_PositionX = m_Position.x;
+	goal_PositionY = m_Position.y;
+
+	// load all correct textures
+	m_TextureUp.loadFromFile("dup.png");
+	m_TextureDown.loadFromFile("ddown.png");
+	m_TextureLeft.loadFromFile("dleft.png");
+	m_TextureRight.loadFromFile("dright.png");
 
 	// create rect to navigate through the spriresheet
 	rectSourceSprite = sf::IntRect(0, 0, 64, 64);

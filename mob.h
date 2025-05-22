@@ -33,7 +33,7 @@ protected:
     int randnum;
 
 public:
-    Mob(Vector2f position = Vector2f(128, 128));
+    Mob(Vector2f position = Vector2f(128, 128)) Mob(position){}
     void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
     virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) = 0;
     //Function to get variables
@@ -49,9 +49,7 @@ class Wolf :public Mob
 {
 public:
     void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
-    Wolf(Vector2f position) : Mob(position)
-    {
-    }
+    Wolf(Vector2f position);
 };
 
 
@@ -59,7 +57,5 @@ class Deer :public Mob
 {
 public:
     void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
-    Deer(Vector2f position) : Mob(position)
-    {
-    }
+    Deer(Vector2f position);
 };
