@@ -15,48 +15,42 @@ protected:
     int speed;
     Vector2f m_Position;
 
-    float goal_PositionX;
-    float goal_PositionY;
+	float goal_PositionX;
+	float goal_PositionY;
     float moveTime;
 
-    Sprite m_Sprite;
+	Sprite m_Sprite;
 
-    //Mob texture
-    Texture m_TextureUp;
-    Texture m_TextureDown;
-    Texture m_TextureLeft;
-    Texture m_TextureRight;
+	IntRect rectSourceSprite;
 
-    IntRect rectSourceSprite;
-
-    //Random number used to determine which direction to go
-    int randnum;
+	//Random number used to determine which direction to go
+	int randnum;
 
 public:
-    Mob(Vector2f position = Vector2f(128, 128));
-    //virtual bool IsHostile();
+
     void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
-    //virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition);
+    virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) = 0;
     //Function to get variables
-    FloatRect getPosition();
+	FloatRect getPosition();
 
-    Sprite getSprite();
+	Sprite getSprite();
 
-    //Function to get center of object
-    Vector2f getCenter();
+	//Function to get center of object
+	Vector2f getCenter();
 
 
 
 };
 
-class Wolf :public Mob
+class Wolf:public Mob
 {
 public:
-    bool IsHostile();
+
+    void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
 };
 
-class Deer :public Mob
+class Deer:public Mob
 {
 public:
-    bool IsHostile();
+    void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
 };
