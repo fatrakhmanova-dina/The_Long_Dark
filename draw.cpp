@@ -26,5 +26,7 @@ void Engine::draw()
 	m_Window.draw(HealthText);
 	m_Window.draw(FoodText);
 	m_Window.draw(WaterText);
-
+	m_Window.draw(CansText);
+	m_Window.draw(SodasText);
+	m_Window.draw(MeatText);
 }

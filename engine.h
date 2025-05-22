@@ -34,6 +34,9 @@ public:
 	void draw();
 
 private:
+	bool num5Pressed = false;
+	bool num6Pressed = false;
+	bool num7Pressed = false;
 	// Set up window variables
 	Vector2f m_Resolution; // To store the resolution of the screen
 
@@ -94,9 +97,9 @@ private:
 
 	Text WaterText;
 
-//	Text ColdText;
-
-	Text WinText;
+	Text CansText;
+	Text SodasText;
+	Text MeatText;
 
 	Text LoseText;
 
@@ -111,8 +114,4 @@ private:
 	RectangleShape WaterBar;
 	float WaterBarStartWidth = 200;
 	float WaterBarHeight = 40;
-
-//	RectangleShape ColdBar;
-//	float ColdBarStartWidth = 200;
-//	float ColdBarHeight = 40;
 };

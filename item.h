@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
+using namespace sf;
 
 class Item
 {
@@ -36,6 +37,7 @@ public:
     Sprite getSprite();
 
     Vector2f getCenter();
+
     int getFood_val();
     int getWater_val();
 };

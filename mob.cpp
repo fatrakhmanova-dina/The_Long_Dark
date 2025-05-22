@@ -3,8 +3,8 @@
 //Constructor
 Wolf::Wolf(Vector2f position)
 {
-	Health = 75;
-	maxHealth = 75;
+	Health = 2000;
+	maxHealth = 2000;
 
 	speed = 128;
 	moveTime = 0;
@@ -28,12 +28,16 @@ Wolf::Wolf(Vector2f position)
 	m_Sprite.setOrigin(32, 32);
 	m_Sprite.setPosition(m_Position);
 }
+int Mob::getHealth()
+{
+	return Health;
+}
 
 //Constructor
 Deer::Deer(Vector2f position)
 {
-	Health = 75;
-	maxHealth = 75;
+	Health = 2000;
+	maxHealth = 2000;
 
 	speed = 128;
 	moveTime = 0;
@@ -73,15 +77,28 @@ Vector2f Mob::getCenter()
 	return m_Position;
 }
 
-bool Mob::IsAlive()
+bool Wolf::IsHostile()
 {
-    if (Health > 0)
-        return true;
-    else
-        return false;
+	return 1;
 }
 
+bool Deer::IsHostile()
+{
+	return 0;
+}
 
+void Mob::ReduceHealth(int r)
+{
+	Health -= r;
+}
+
+bool Mob::IsAlive()
+{
+	if (Health > 0)
+		return 1;
+	else
+		return 0;
+}
 
 void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 {
@@ -339,49 +356,49 @@ void Deer::MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosit
 
 
 
-        if (distance.x > distance.y)
-        {
-            if (m_Position.x < pPosition.x)
-            {
-                randnum = 3;
-                goal_PositionX = m_Position.x - speed;
-            }
-            else
-            {
-                randnum = 4;
-                goal_PositionX = m_Position.x + speed;
-            }
-            moveTime = totalTime + 1;
-        }
+		if (distance.x > distance.y)
+		{
+			if (m_Position.x < pPosition.x)
+			{
+				randnum = 3;
+				goal_PositionX = m_Position.x - speed;
+			}
+			else
+			{
+				randnum = 4;
+				goal_PositionX = m_Position.x + speed;
+			}
+			moveTime = totalTime + 1;
+		}
 
-        else if (distance.x < distance.y)
-        {
-            if (m_Position.y < pPosition.y)
-            {
-                randnum = 1;
-                goal_PositionY = m_Position.y - speed;
-            }
-            else
-            {
-                randnum = 2;
-                goal_PositionY = m_Position.y + speed;
-            }
-            moveTime = totalTime + 1;
-        }
-        //Else to move deer if x distance and y distance are the same
-        else {
-            if (m_Position.y < pPosition.y)
-            {
-                randnum = 1;
-                goal_PositionY = m_Position.y - speed;
-            }
-            else
-            {
-                randnum = 2;
-                goal_PositionY = m_Position.y + speed;
-            }
-            moveTime = totalTime + 1;
-        }
+		else if (distance.x < distance.y)
+		{
+			if (m_Position.y < pPosition.y)
+			{
+				randnum = 1;
+				goal_PositionY = m_Position.y - speed;
+			}
+			else
+			{
+				randnum = 2;
+				goal_PositionY = m_Position.y + speed;
+			}
+			moveTime = totalTime + 1;
+		}
+		//Else to move deer if x distance and y distance are the same
+		else {
+			if (m_Position.y < pPosition.y)
+			{
+				randnum = 1;
+				goal_PositionY = m_Position.y - speed;
+			}
+			else
+			{
+				randnum = 2;
+				goal_PositionY = m_Position.y + speed;
+			}
+			moveTime = totalTime + 1;
+		}
 
 	}
 }

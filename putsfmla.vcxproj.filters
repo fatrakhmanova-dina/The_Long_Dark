@@ -106,6 +106,30 @@
     <Image Include="soda.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="ddown.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="dleft.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="dright.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="dup.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="tdown.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="tleft.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="tright.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="tup.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="KOMIKAP_.ttf">

@@ -1,9 +1,9 @@
 #pragma once
-
+#include <list>
 #include "player.h"
-//#include "item.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "item.h"
 
 using namespace sf;
 
@@ -39,7 +39,9 @@ public:
 
 	//Returns the spriteSprite getSprite();
 
-
+	int getMaxWeight();
+	int getMaxFood();
+	int getMaxWater();
 	//bool isAttacked();
 
 	//Will check if player is alive
@@ -74,6 +76,10 @@ public:
 	void stopDown();
 	void stopUp();
 
+	void PickUp(Item* item);
+	void Use(int type);
+
+	std::list<Item*> getInventory();
 protected:
 	// The player health
 	int Health;
@@ -120,4 +126,6 @@ protected:
 	bool LeftPressed;
 	bool RightPressed;
 
+	std::list<Item*> Inventory;
+	std::list<Item*>::const_iterator iteri;
 };

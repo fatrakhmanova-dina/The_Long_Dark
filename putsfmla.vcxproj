@@ -165,7 +165,11 @@
   <ItemGroup>
     <Image Include="axe.png" />
     <Image Include="can.png" />
+    <Image Include="ddown.png" />
+    <Image Include="dleft.png" />
     <Image Include="down.png" />
+    <Image Include="dright.png" />
+    <Image Include="dup.png" />
     <Image Include="left.png" />
     <Image Include="mdown.png" />
     <Image Include="meat.png" />
@@ -175,6 +179,10 @@
     <Image Include="right.png" />
     <Image Include="snow.png" />
     <Image Include="soda.png" />
+    <Image Include="tdown.png" />
+    <Image Include="tleft.png" />
+    <Image Include="tright.png" />
+    <Image Include="tup.png" />
     <Image Include="up.png" />
   </ItemGroup>
   <ItemGroup>

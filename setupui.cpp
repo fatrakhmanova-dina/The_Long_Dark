@@ -27,12 +27,6 @@ void Engine::setupUI()
 	WaterText.setFillColor(Color::Black);
 	WaterText.setPosition(100, 700);
 
-	WinText.setFont(font);
-	WinText.setString("You win!");
-	WinText.setCharacterSize(100);
-	WinText.setFillColor(Color::Green);
-	WinText.setPosition(960, 540);
-
 	LoseText.setFont(font);
 	LoseText.setString("You Lose...");
 	LoseText.setCharacterSize(100);

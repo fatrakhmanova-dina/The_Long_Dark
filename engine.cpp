@@ -76,7 +76,6 @@ Engine::Engine()
 					{
 						// Create a new player and point to it
 						pPlayer = new Player(objectPosition);
-						std::cout << objectPosition.x << " " << objectPosition.y <<  std::endl;
 					}
 					// If there is already a player created
 					else
@@ -90,7 +89,14 @@ Engine::Engine()
 				case '2':
 				{
 					// Create a new mobs in position as text file
-					Mob* mob = new Mob(objectPosition);
+					Mob* mob = new Wolf(objectPosition);
+					Mobs.push_back(mob); // push it to the mobs list
+					break;
+				}
+				case '3':
+				{
+					// Create a new mobs in position as text file
+					Mob* mob = new Deer(objectPosition);
 					Mobs.push_back(mob); // push it to the mobs list
 					break;
 				}
@@ -159,7 +165,7 @@ void Engine::run()
 		input(); // Input implementation
 
 		//Set health,water,food bar size based on health,water,food
-		HealthBar.setSize(Vector2f(2 * pPlayer->getHealth(), HealthBarHeight));
+		HealthBar.setSize(Vector2f(0.1 * pPlayer->getHealth(), HealthBarHeight));
 		FoodBar.setSize(Vector2f(2 * pPlayer->getFood(), FoodBarHeight));
 		WaterBar.setSize(Vector2f(2 * pPlayer->getWater(), WaterBarHeight));
 
@@ -230,16 +236,16 @@ void Engine::run()
 
 
 		//////////Here is mechanic of moving mobs towards or from player
-		/*for (iterE = Mob.begin(); iterE != Mob.end(); ++iterE)
+		for (iter = Mobs.begin(); iter != Mobs.end(); ++iter)
 		{
 
-			if ((*iterE)->getCenter().y > minCameraViewY && (*iterE)->getCenter().y < maxCameraViewY
-				&& (*iterE)->getCenter().x > minCameraViewX && (*iterE)->getCenter().x < maxCameraViewX)
+			if ((*iter)->getCenter().y > minCameraViewY && (*iter)->getCenter().y < maxCameraViewY
+				&& (*iter)->getCenter().x > minCameraViewX && (*iter)->getCenter().x < maxCameraViewX)
 			{
 
-				(*iterE)->MoveTowards(dtAsSeconds, m_TimeAsSeconds, pPlayer->getCenter());
+				(*iter)->MoveAgainstPlayer(dtAsSeconds, m_TimeAsSeconds, pPlayer->getCenter());
 			}
-		}*/
+		}
 
 		////////////Move mobs
 		for (iter = Mobs.begin(); iter != Mobs.end(); ++iter)
@@ -263,6 +269,63 @@ void Engine::run()
 		}
 
 		///////////Here should be some logic about mobs actions
+
+		for (iter = Mobs.begin(); iter != Mobs.end(); ++iter)
+		{
+			Vector2f distance;
+			distance.x = 0;
+			distance.y = 0;
+			if ((*iter)->getCenter().x < pPlayer->getCenter().x)
+			{
+				distance.x = pPlayer->getCenter().x - (*iter)->getCenter().x;
+			}
+			else
+			{
+				distance.x = (*iter)->getCenter().x - pPlayer->getCenter().x;
+			}
+			if ((*iter)->getCenter().y < pPlayer->getCenter().y)
+			{
+				distance.y = pPlayer->getCenter().y - (*iter)->getCenter().y;
+			}
+			else
+			{
+				distance.y = (*iter)->getCenter().y - pPlayer->getCenter().y;
+			}
+			if (((distance.x < 127 && distance.y < 129) || (distance.x < 129 && distance.y < 127)) && (*iter)->IsHostile())
+			{
+				pPlayer->ReduceHealth(1);
+			}
+		}
+
+		for (iter = Mobs.begin(); iter != Mobs.end(); ++iter)
+		{
+			if (!(*iter)->IsAlive())
+			{
+				Vector2f Pos = (*iter)->getCenter();
+				Mobs.erase(iter);
+				Item* item = new Item(7, Pos);
+				Items.push_back(item);
+				break;
+			}
+		}
+
+		CansText.setFont(font);
+		CansText.setString("Cans amount:" + std::to_string(pPlayer->getCans()));
+		CansText.setCharacterSize(25);
+		CansText.setFillColor(Color::Black);
+		CansText.setPosition(1600, 100);
+
+		SodasText.setFont(font);
+		SodasText.setString("Sodas amount:" + std::to_string(pPlayer->getSodas()));
+		SodasText.setCharacterSize(25);
+		SodasText.setFillColor(Color::Black);
+		SodasText.setPosition(1600, 200);
+
+		MeatText.setFont(font);
+		MeatText.setString("Meat amount:" + std::to_string(pPlayer->getMeat()));
+		MeatText.setCharacterSize(25);
+		MeatText.setFillColor(Color::Black);
+		MeatText.setPosition(1600, 300);
 
 		draw();
 		m_Window.display();

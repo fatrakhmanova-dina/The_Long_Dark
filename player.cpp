@@ -1,18 +1,19 @@
 #pragma once
 #include "player.h"
+#include "engine.h"
 //Constructor
 Player::Player(Vector2f position)
 {
-	Health = 100;
-	maxHealth = 100;
+	Health = 2000;
+	maxHealth = 2000;
 
-	Food = 100;
+	Food = 0;
 	maxFood = 100;
 
-	Water = 100;
+	Water = 0;
 	maxWater = 100;
 
-	Weight = 100;
+	Weight = 0;
 	maxWeight = 100;
 
 	can = 0;
@@ -241,6 +242,20 @@ void Player::stopDown()
 {
 	DownPressed = false;
 }
+int Player::getMaxWeight()
+{
+	return this->maxWeight;
+}
+
+int Player::getMaxWater()
+{
+	return this->maxWater;
+}
+
+int Player::getMaxFood()
+{
+	return this->maxFood;
+}
 
 void Player::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 {
@@ -349,3 +364,116 @@ void Player::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)
 	m_Sprite.setPosition(m_Position);
 }
 
+void Player::PickUp(Item* item)
+{
+		if (item->getType() == 5)
+			can++;
+		else if (item->getType() == 6)
+			soda++;
+		else if (item->getType() == 7)
+			meat++;
+		else if (item->getType() == 4)
+		{
+			if (axe < 1)
+			{
+				m_TextureUp.loadFromFile("tup.png");
+				m_TextureDown.loadFromFile("tdown.png");
+				m_TextureLeft.loadFromFile("tleft.png");
+				m_TextureRight.loadFromFile("tright.png");
+
+				// create rect to navigate through the spriresheet
+				rectSourceSprite = sf::IntRect(0, 0, 64, 64);
+
+				m_Sprite.setTexture(m_TextureRight);
+				m_Sprite = Sprite(m_TextureRight, rectSourceSprite);
+
+				m_Sprite.setOrigin(32, 32);
+				axe++;
+			}
+			else
+				return;
+
+		}
+		Weight += item->getWeight();
+		Inventory.push_back(item);
+		std::cout << " picked up" << std::endl;
+
+}
+
+void Player::Use(int type)
+{
+	if (type == 5)
+	{
+		if (can >= 1)
+		{
+			for (iteri = Inventory.begin(); iteri != Inventory.end(); ++iteri)
+			{
+				if ((*iteri)->getType() == 5)
+				{
+					if (Water == maxWater && Food == maxFood)
+						break;
+					else
+					{
+						AddWater((*iteri)->getWater_val());
+						AddFood((*iteri)->getFood_val());
+						ReduceWeight((*iteri)->getWeight());
+						Inventory.erase(iteri);
+						can--;
+						break;
+					}
+				}
+			}
+		}
+	}
+	if (type == 6)
+	{
+		if (soda >= 1)
+		{
+			for (iteri = Inventory.begin(); iteri != Inventory.end(); ++iteri)
+			{
+				if ((*iteri)->getType() == 6)
+				{
+					if (Water == maxWater && Food == maxFood)
+						break;
+					else
+					{
+						AddWater((*iteri)->getWater_val());
+						AddFood((*iteri)->getFood_val());
+						ReduceWeight((*iteri)->getWeight());
+						Inventory.erase(iteri);
+						soda--;
+						break;
+					}
+				}
+			}
+		}
+	}
+	if (type == 7)
+	{
+		if (meat >= 1)
+		{
+			for (iteri = Inventory.begin(); iteri != Inventory.end(); ++iteri)
+			{
+				if ((*iteri)->getType() == 7)
+				{
+					if (Water == maxWater && Food == maxFood)
+						break;
+					else
+					{
+						AddWater((*iteri)->getWater_val());
+						AddFood((*iteri)->getFood_val());
+						ReduceWeight((*iteri)->getWeight());
+						Inventory.erase(iteri);
+						meat--;
+						break;
+					}
+				}
+			}
+		}
+	}
+}
+
+std::list<Item*> Player::getInventory()
+{
+	return this->Inventory;
+}
