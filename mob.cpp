@@ -73,6 +73,14 @@ Vector2f Mob::getCenter()
 	return m_Position;
 }
 
+bool Mob::IsAlive()
+{
+    if (Health > 0)
+        return true;
+    else
+        return false;
+}
+
 
 
 void Mob::Movement(float elapsedTime, float totalTime, Vector2f mapBounds)

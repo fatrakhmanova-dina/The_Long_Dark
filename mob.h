@@ -43,6 +43,7 @@ public:
 
     //Function to get center of object
     Vector2f getCenter();
+    bool IsAlive();
 };
 
 class Wolf :public Mob
