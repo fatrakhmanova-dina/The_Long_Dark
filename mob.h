@@ -37,26 +37,26 @@ public:
     void Movement(float elapsedTime, float totalTime, Vector2f mapBounds);
     virtual void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) = 0;
     //Function to get variables
-	FloatRect getPosition();
+    FloatRect getPosition();
 
-	Sprite getSprite();
+    Sprite getSprite();
 
-	//Function to get center of object
-	Vector2f getCenter();
-
-
-
+    //Function to get center of object
+    Vector2f getCenter();
 };
 
-class Wolf:public Mob
-{
-public:
-
-    void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
-};
-
-class Deer:public Mob
+class Wolf :public Mob
 {
 public:
     void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
+    Wolf(Vector2f position) : Mob(position)
+    {
+    }
 };
+
+
+//class Deer :public Mob
+//{
+//public:
+//    void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
+//};
