@@ -55,8 +55,11 @@ public:
 };
 
 
-//class Deer :public Mob
-//{
-//public:
-//    void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
-//};
+class Deer :public Mob
+{
+public:
+    void MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition) override;
+    Deer(Vector2f position) : Mob(position)
+    {
+    }
+};

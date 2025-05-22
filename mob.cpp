@@ -262,7 +262,90 @@ void Wolf::MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosit
 			}
 
 		}
-		//std::cout << randnum << std::endl;
 
 	}
 }
+
+
+
+
+//Used by deer to run from player
+void Deer::MoveAgainstPlayer(float elapsedTime, float totalTime, Vector2f pPosition)
+{
+	//Used to measure distance from player
+	Vector2f distance;
+	distance.x = 0;
+	distance.y = 0;
+	if (moveTime <= totalTime)
+	{
+		//set position to goal position
+		m_Position.x = goal_PositionX;
+		m_Position.y = goal_PositionY;
+		m_Sprite.setPosition(m_Position);
+		//Determine distance to player
+		if (m_Position.x < pPosition.x)
+		{
+			distance.x = pPosition.x - m_Position.x;
+		}
+		else
+		{
+			distance.x = m_Position.x - pPosition.x;
+		}
+		if (m_Position.y < pPosition.y)
+		{
+			distance.y = pPosition.y - m_Position.y;
+		}
+		else
+		{
+			distance.y = m_Position.y - pPosition.y;
+		}
+
+
+
+        if (distance.x > distance.y)
+        {
+            if (m_Position.x < pPosition.x)
+            {
+                randnum = 3;
+                goal_PositionX = m_Position.x - speed;
+            }
+            else
+            {
+                randnum = 4;
+                goal_PositionX = m_Position.x + speed;
+            }
+            moveTime = totalTime + 1;
+        }
+
+        else if (distance.x < distance.y)
+        {
+            if (m_Position.y < pPosition.y)
+            {
+                randnum = 1;
+                goal_PositionY = m_Position.y - speed;
+            }
+            else
+            {
+                randnum = 2;
+                goal_PositionY = m_Position.y + speed;
+            }
+            moveTime = totalTime + 1;
+        }
+        //Else to move deer if x distance and y distance are the same
+        else {
+            if (m_Position.y < pPosition.y)
+            {
+                randnum = 1;
+                goal_PositionY = m_Position.y - speed;
+            }
+            else
+            {
+                randnum = 2;
+                goal_PositionY = m_Position.y + speed;
+            }
+            moveTime = totalTime + 1;
+        }
+
+	}
+}
+
